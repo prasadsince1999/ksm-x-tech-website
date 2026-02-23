@@ -115,9 +115,17 @@
         document.addEventListener("DOMContentLoaded", function () {
             // Header scroll effect and KSM width calculation
             const ksmElement = document.querySelector('.logo-ksm');
-            if (ksmElement) {
-                document.documentElement.style.setProperty('--ksm-width', ksmElement.offsetWidth + 'px');
+
+            function updateKsmWidth() {
+                if (ksmElement) {
+                    document.documentElement.style.setProperty('--ksm-width', ksmElement.offsetWidth + 'px');
+                }
             }
+
+            // Wait for fonts to load before calculating width, and recalculate on resize
+            document.fonts.ready.then(updateKsmWidth);
+            window.addEventListener('resize', updateKsmWidth);
+            updateKsmWidth(); // initial calculation
 
             const header = document.querySelector('.header');
             if (header) {
