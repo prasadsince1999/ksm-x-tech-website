@@ -58,6 +58,11 @@ body {
 /* Header */
 .header {
     padding: 1.5rem 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--bg-color);
+    /* ensures text doesn't clash with scrolled content */
 }
 
 .logo {
