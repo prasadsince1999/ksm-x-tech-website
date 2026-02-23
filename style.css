@@ -62,7 +62,13 @@ body {
     top: 0;
     z-index: 1000;
     background-color: var(--bg-color);
-    /* ensures text doesn't clash with scrolled content */
+    transition: padding 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.header.scrolled {
+    padding: 1rem 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* subtle shadow */
 }
 
 .logo {
@@ -70,6 +76,39 @@ body {
     font-size: 1.8rem;
     line-height: 1.2;
     letter-spacing: -0.5px;
+    position: relative;
+    height: 4.32rem;
+    /* 1.8rem * 1.2 * 2 lines */
+    display: flex;
+    transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    color: inherit;
+    text-decoration: none;
+}
+
+.header.scrolled .logo {
+    height: 2.16rem;
+    /* 1 line */
+}
+
+.logo-ksm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.logo-xtech {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0, 2.16rem);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    white-space: nowrap;
+}
+
+.header.scrolled .logo-xtech {
+    /* Translate next to KSM based on calculated width */
+    transform: translate(calc(var(--ksm-width, 3.5rem) + 0.4rem), 0);
 }
 
 /* Animations */

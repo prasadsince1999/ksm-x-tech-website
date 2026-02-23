@@ -12,7 +12,7 @@
     <header class="header">
         <a href="index.html" style="text-decoration: none; color: inherit;">
             <div class="logo">
-                <span class="logo-ksm">KSM</span><br>
+                <span class="logo-ksm">KSM</span>
                 <span class="logo-xtech">X Tech</span>
             </div>
         </a>
@@ -137,6 +137,26 @@
             &copy; 2026 KSM X Tech. All rights reserved.
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Header scroll effect and KSM width calculation
+            const ksmElement = document.querySelector('.logo-ksm');
+            if (ksmElement) {
+                document.documentElement.style.setProperty('--ksm-width', ksmElement.offsetWidth + 'px');
+            }
+
+            const header = document.querySelector('.header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 20) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
