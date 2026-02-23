@@ -256,15 +256,18 @@ body {
 .contact-row {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 3.5vw, 2.5rem);
+    flex-wrap: wrap;
+    /* Allows email to wrap under button on very tiny screens if needed */
+    gap: clamp(0.75rem, 3.5vw, 2.5rem);
 }
 
 .contact-btn {
     border: 2px solid #FFFFFF;
     color: #FFFFFF;
-    padding: clamp(0.4rem, 1vw + 0.2rem, 0.6rem) clamp(1.2rem, 3vw, 2rem);
+    padding: clamp(0.35rem, 1vw + 0.2rem, 0.6rem) clamp(1rem, 3vw, 2rem);
     font-weight: 700;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+    /* slightly smaller minimum */
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -273,7 +276,10 @@ body {
     color: #e0e0e0;
     text-decoration: none;
     font-weight: 500;
-    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.8vw, 1.1rem);
+    /* slightly smaller minimum */
+    word-break: break-all;
+    /* Ensures long emails break instead of overflowing if wrapping fails */
 }
 
 .contact-email:hover {
