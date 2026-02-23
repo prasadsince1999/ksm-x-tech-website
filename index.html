@@ -69,9 +69,10 @@
 
                 // Set staggered transition delays for each word
                 let delay = 0;
+                let step = el.classList.contains('hero-title') ? 150 : 25; // Slower stagger for main title
                 el.querySelectorAll('.animate-word').forEach(span => {
                     span.style.transitionDelay = `${delay}ms`;
-                    delay += 25; // Delay between words (Anthropic uses similar staggered timing)
+                    delay += step; // Delay between words
                 });
 
                 el.classList.add('word-reveal');
