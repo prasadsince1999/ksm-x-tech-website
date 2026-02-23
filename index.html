@@ -52,6 +52,31 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Apply Word Reveal effect to these selectors
+            document.querySelectorAll('.hero-title, .hero-subtitle, .about-content p, .about-heading h2').forEach(el => {
+                const html = el.innerHTML;
+
+                // Split by spaces but preserve <br> tags
+                const newHtml = html.split(/(<br\s*\/?>)/i).map(part => {
+                    if (part.toLowerCase().startsWith('<br')) return part;
+
+                    return part.split(/\s+/).filter(word => word.trim().length > 0).map(word => {
+                        return `<span class="animate-word-container"><span class="animate-word">${word}</span></span>`;
+                    }).join(' ');
+                }).join('');
+
+                el.innerHTML = newHtml;
+
+                // Set staggered transition delays for each word
+                let delay = 0;
+                el.querySelectorAll('.animate-word').forEach(span => {
+                    span.style.transitionDelay = `${delay}ms`;
+                    delay += 25; // Delay between words (Anthropic uses similar staggered timing)
+                });
+
+                el.classList.add('word-reveal');
+            });
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -63,9 +88,19 @@
                 threshold: 0.1
             });
 
-            document.querySelectorAll('.fade-in-section').forEach((section) => {
+            document.querySelectorAll('.fade-in-section, .word-reveal').forEach((section) => {
                 observer.observe(section);
             });
+
+            setTimeout(() => {
+                document.querySelectorAll('.word-reveal').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('is-visible');
+                        observer.unobserve(el);
+                    }
+                });
+            }, 50); // Ensure elements already in viewport animate immediately
         });
     </script>
 </body>
