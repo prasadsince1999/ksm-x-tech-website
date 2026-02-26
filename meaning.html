@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Meaning Behind KSM X Tech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="policy-page">
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-ksm">KSM</span>
+            <span class="logo-xtech">X Tech</span>
+        </a>
+    </header>
+
+    <main class="policy-content">
+        <h1>The Meaning Behind KSM X Tech</h1>
+
+        <p><strong>K</strong> reflects our family identity — the roots that shaped who I am.</p>
+
+        <p><strong>KSM X Tech</strong> was founded on the values of family, integrity, and growth.</p>
+
+        <p><strong>S</strong> represents <strong>Satya</strong> — my father, who dedicated his life to honest public
+            service and helping those in need. From him, I learned integrity, discipline, and the true value of money.
+        </p>
+
+        <p><strong>M</strong> represents <strong>Manga</strong> — my mother, who nurtured me with spirituality,
+            kindness, and strength. From her, I learned grounding, compassion, and inner balance.</p>
+
+        <p>The <strong>“X”</strong> symbolizes transformation — where traditional values meet modern innovation.</p>
+
+        <p><strong>KSM X Tech</strong> carries these principles into every product we build: honesty, resilience,
+            purpose, and long-term
+            vision.</p>
+    </main>
+
+    <footer class="footer" style="padding: 2rem;">
+        <div class="copyright">
+            &copy; 2026 KSM X Tech. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Header scroll effect and KSM width calculation
+            const ksmElement = document.querySelector('.logo-ksm');
+
+            function updateKsmWidth() {
+                if (ksmElement) {
+                    document.documentElement.style.setProperty('--ksm-width', ksmElement.offsetWidth + 'px');
+                }
+            }
+
+            // Wait for fonts to load before calculating width, and recalculate on resize
+            document.fonts.ready.then(updateKsmWidth);
+            window.addEventListener('resize', updateKsmWidth);
+            updateKsmWidth(); // initial calculation
+
+            const header = document.querySelector('.header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else if (window.scrollY <= 10) {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

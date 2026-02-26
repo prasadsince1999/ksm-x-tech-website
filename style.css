@@ -57,6 +57,19 @@ body {
     /* Fix to prevent content jump when absolute/fixed header resizes */
 }
 
+/* Header Entrance Animation */
+@keyframes slideDownHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Header */
 .header {
     padding: 1.5rem 1.5rem;
@@ -68,6 +81,7 @@ body {
     z-index: 1000;
     background-color: var(--bg-color);
     transition: padding 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideDownHeader 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .header.scrolled {
@@ -84,15 +98,17 @@ body {
     letter-spacing: -0.5px;
     position: relative;
     height: 4.32rem;
+    width: 8rem;
     /* 1.8rem * 1.2 * 2 lines */
-    display: flex;
-    transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-block;
+    transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1), width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     color: inherit;
     text-decoration: none;
 }
 
 .header.scrolled .logo {
     height: 2.16rem;
+    width: 12rem;
     /* 1 line */
 }
 
